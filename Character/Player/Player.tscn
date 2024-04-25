@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://cajtqqlgjoc47"]
+
+[ext_resource type="Script" path="res://Character/Player/PlayerController.gd" id="1_o67g1"]
+[ext_resource type="Texture2D" uid="uid://cuui82ddp7a3k" path="res://Character/Player/Asset/mc-walk-1.png" id="1_ongek"]
+[ext_resource type="Texture2D" uid="uid://b5cvicla7gikq" path="res://Character/Player/Asset/mc-walk-2.png" id="2_em167"]
+[ext_resource type="PackedScene" uid="uid://d4gxtuue5yrwq" path="res://Weapon/Pistol/Gun/Pistol.tscn" id="4_tasim"]
+[ext_resource type="Script" path="res://Character/Player/WeaponController.gd" id="4_usl2l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r5m62"]
+size = Vector2(104, 104)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fjadj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ongek")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ongek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_em167")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(0.08, 0.08)
+script = ExtResource("1_o67g1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_r5m62")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fjadj")
+animation = &"walk"
+frame_progress = 0.523084
+
+[node name="WeaponController" type="Node2D" parent="."]
+script = ExtResource("4_usl2l")
+
+[node name="Pistol" parent="WeaponController" instance=ExtResource("4_tasim")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(6, 6)
