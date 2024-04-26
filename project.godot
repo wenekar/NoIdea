@@ -13,7 +13,7 @@ config_version=5
 config/name="NoIdea"
 run/main_scene="res://Levels/Test.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Character/Player/Asset/mc-walk-1.png"
 
 [input]
 

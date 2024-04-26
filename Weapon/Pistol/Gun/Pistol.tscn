@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4gxtuue5yrwq"]
+[gd_scene load_steps=6 format=3 uid="uid://d4gxtuue5yrwq"]
 
 [ext_resource type="Script" path="res://Weapon/Pistol/Gun/Pistol.gd" id="1_xyfk1"]
 [ext_resource type="AudioStream" uid="uid://cx0eus063ddym" path="res://Weapon/Pistol/Sounds/pop-1.ogg" id="2_3sjq5"]
 [ext_resource type="Texture2D" uid="uid://7iaanah6v3ll" path="res://Weapon/Pistol/Gun/Pistol.png" id="2_aps0l"]
+[ext_resource type="AudioStream" uid="uid://drn6lpn3rmbfc" path="res://Weapon/Pistol/Sounds/pop-8.ogg" id="4_nxwcx"]
+[ext_resource type="AudioStream" uid="uid://dfbnywh7j5286" path="res://Weapon/Pistol/Sounds/pop-3.ogg" id="4_qlejb"]
 
 [node name="Pistol" type="Node2D"]
 script = ExtResource("1_xyfk1")
-sounds = Array[AudioStream]([ExtResource("2_3sjq5")])
+sounds = Array[AudioStream]([ExtResource("2_3sjq5"), ExtResource("4_nxwcx"), ExtResource("4_qlejb")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

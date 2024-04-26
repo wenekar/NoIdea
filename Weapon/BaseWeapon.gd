@@ -12,3 +12,17 @@ class_name Weapon
 @export var fire_cd: float = 1.0
 
 var m_CurAmmo: int = 0
+var m_AudioPlayers: Array[AudioStreamPlayer] = []
+
+func play_audio(audioFile: AudioStream) -> void:
+	var audioPlayer = AudioStreamPlayer.new()
+	audioPlayer.stream = audioFile
+	m_AudioPlayers.push_back(audioPlayer)
+	get_tree().root.add_child(audioPlayer)
+	audioPlayer.finished.connect(Callable(destroy_player))
+	audioPlayer.play()
+	pass
+
+func destroy_player() -> void:
+	m_AudioPlayers.pop_front().queue_free()
+	pass
