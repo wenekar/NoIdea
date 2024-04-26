@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 class_name bullet
 
@@ -25,13 +25,17 @@ func _ready():
 	
 
 func _physics_process(delta):
-	position += speed * m_Direction * delta
 	m_Time += delta
 	if m_Time > lifetime:
 		queue_free()
+	velocity = speed * m_Direction
+	move_and_slide()
+	var collision: KinematicCollision2D = get_last_slide_collision()
+	if collision:
+		if collision.get_collider() is Enemy:
+			# Do damage
+			queue_free()
+			pass
+		m_Direction = m_Direction.bounce(collision.get_normal())
+		pass
 	pass
-
-## Hit a body, do hit checks.
-func _on_body_entered(body):
-	
-	pass # Replace with function body.
